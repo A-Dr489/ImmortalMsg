@@ -1,0 +1,400 @@
+:root {
+  --bg: black;
+}
+
+[data-theme="light"] {
+  --bg: white;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: white;
+}
+
+/* Nav Bar */
+
+.daddy-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.5);
+  gap: 400px;
+}
+
+.links-holder {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-button {
+  color: gray;
+  background-color: black;
+  padding: 8px 0px;
+  width: 130px;
+  border: none;
+  font-size: 1.35em;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  color: cyan;
+}
+
+.nav-selected {
+  border: none;
+  border-bottom: 2px solid cyan;
+  color: cyan;
+  background-color: black;
+  width: 130px;
+  padding: 8px 0px;
+  box-shadow: 0px -1px 10px rgba(0, 255, 255, 0.601);
+  font-size: 1.35em;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+/* Nav Bar */
+
+/* messages */
+
+.daddy-message {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(400px, 2fr);
+  grid-template-rows: 90px 1fr 80px;
+  height: calc(100vh - 82px);
+}
+
+.search-conv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgba(0, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.5);
+}
+
+.search-input {
+  color: white;
+  font-size: 1.25em;
+  padding: 14px 10px;
+  background-color: black;
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  transition: 0.2s ease;
+}
+
+.search-input:hover {
+  border-color: rgba(255, 255, 255, 0.552);
+}
+
+.search-input:focus, .search-input:active {
+  outline: none;
+  border-color: cyan;
+  box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.692);
+}
+
+.profile-holder{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 40px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.5);
+}
+
+.sidebar-conv {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  scrollbar-width: none;
+  border-right: 1px solid rgba(0, 255, 255, 0.5);
+}
+
+.conv-card {
+  border-bottom: 1px solid rgba(0, 255, 255, 0.5);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.conv-card:hover {
+  background-color: rgba(0, 255, 255, 0.05);
+}
+
+.content-conv {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.my-position {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 20px;
+}
+
+.my-box {
+  background-color: rgba(0, 255, 255, 0.188);
+  border-radius: 10px;
+  padding: 16px 24px;
+  max-width: 48%;
+  border: 1px solid rgba(0, 255, 255, 0.664);
+  box-shadow: 0px 0px 8px cyan;
+}
+
+.enemy-position {
+  display: flex;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+
+.enemy-box {
+  background-color: black;
+  border-radius: 10px;
+  padding: 16px 24px;
+  max-width: 48%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.send-holder {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(0, 255, 255, 0.5);
+  gap: 30px;
+  justify-content: center;
+}
+
+.send-btn {
+  color: cyan;
+  font-size: 1.25em;
+  padding: 14px 20px;
+  background-color: rgba(0, 255, 255, 0.089);
+  border: 1px solid cyan;
+  transition: 0.2s ease;
+  box-shadow: 0px 0px 10px cyan;
+  cursor: pointer;
+}
+
+.send-btn:hover {
+  box-shadow: 0px 0px 20px cyan;
+}
+
+/* messages */
+
+/* contacts */
+
+.daddy-contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.contact-card {
+  background-color: rgba(0, 255, 255, 0.177);
+  width: 45%;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+/* contacts */
+
+/* contact nav */
+
+.daddy-contact-nav {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px 30px 0px;
+}
+
+.contact-nav-link, .contact-nav-link:visited {
+  text-decoration: none;
+  font-size: 1.4em;
+  color: white;
+  border-bottom: 1px solid black;
+  transition: 0.2s ease;
+}
+
+.contact-nav-link:hover {
+  border-bottom: 1px solid cyan;
+}
+
+.contact-nav-link:active {
+  border-bottom: none;
+  color: cyan;
+}
+
+/* contact nav */
+
+/* AddFriend */
+
+.daddy-add {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.input-add {
+  font-size: 1.35em;
+  padding: 10px;
+  background-color: rgba(0, 255, 255, 0.101);
+  width: 450px;
+  border-radius: 6px;
+  border: 1px solid black;
+  transition: 0.2s ease;
+  color: white;
+}
+
+.input-add:hover {
+  border: 1px solid white;
+}
+
+.input-add:active, .input-add:focus {
+  outline: none;
+  border: 1px solid cyan;
+}
+
+/* AddFriend */
+
+/* Profile */
+
+.daddy-profile {
+  display: flex;
+  height: calc(100vh - 82px);;
+}
+
+.profile-settings {
+  min-width: 300px;
+  background-color: rgb(12, 12, 12);
+  flex: 1;
+}
+
+.profile-links, .profile-links:visited {
+  display: block;
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.4em;
+  color: white;
+  margin: 0px 20px 16px 20px;
+  border-radius: 10px;
+  padding: 5px 20px 8px 20px;
+  transition: 0.25s ease;
+}
+
+.profile-links:hover {
+  background-color: rgba(71, 71, 71, 0.544);
+}
+
+.profile-links:active {
+  color: cyan;
+  background-color: rgba(55, 55, 55, 0.544);
+}
+
+/* Profile */
+
+/* MyAccount */
+
+
+.button1 {
+  font-size: 1.3em;
+  padding: 8px 16px;
+  border-radius: 7px;
+  background-color: cyan;
+  border: none;
+  box-shadow: 0px 0px 8px rgba(0, 255, 255, 0.705);
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.button1:hover {
+  box-shadow: 0px 0px 15px cyan;
+}
+
+.button1:active {
+  opacity: 0.774;
+}
+
+.button2 {
+  font-size: 1.3em;
+  padding: 8px 16px;
+  border-radius: 7px;
+  color: white;
+  background-color: rgba(34, 34, 34, 0.6);
+  box-shadow: 0px 0px 8px rgba(25, 25, 25, 1);
+  border: none;
+  transition: 0.15s ease;
+  cursor: pointer;
+}
+
+.button2:hover {
+  box-shadow: 0px 0px 15px black;
+}
+
+.button2:active {
+  opacity: 0.5;
+}
+
+.Delete-dangours {
+  font-size: 1.3em;
+  padding: 8px 20px;
+  border-radius: 7px;
+  background-color: rgb(252, 78, 47);
+  border: none;
+  color: white;
+  box-shadow: 0px 0px 8px red;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.Delete-dangours:hover {
+  box-shadow: 0px 0px 15px red;
+}
+
+.Delete-dangours:active {
+  opacity: 0.774;
+}
+
+.form-dialog {
+  background-color: rgb(24, 24, 24);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 50px 30px 50px;
+  max-width: 320px;
+}
+
+.form-dialog::backdrop{
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.myAccount-inputs {
+  display: block;
+  background-color: rgb(20, 20, 20);
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+  font-size: 1.3em;
+  color: white;
+  width: calc(100% - 10px);
+  padding: 8px 4px 8px 8px;
+  margin-top: 10px;
+  transition: 0.2s ease;
+}
+
+.myAccount-inputs:hover {
+  border: 1px solid white;
+  box-shadow: 0px 0px 8px white;
+}
+
+.myAccount-inputs:active, .myAccount-inputs:focus {
+  outline: none;
+  border: 1px solid cyan;
+  box-shadow: 0px 0px 8px cyan;
+}
+
+/* MyAccount */

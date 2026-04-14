@@ -1,0 +1,85 @@
+
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "4890:4890"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web1
+      - web2
+      - server1
+      - server2
+  web1:
+    build: ./Client
+    ports:
+      - 5173:5173
+    develop:
+      watch:
+        - path: ./Client/package.json
+          action: rebuild
+        - path: ./Client/package-lock.json
+          action: rebuild
+        - path: ./Client
+          target: /app
+          action: sync
+  web2:
+    build: ./Client
+    ports:
+      - 5174:5173
+    
+    develop:
+      watch:
+        - path: ./Client/package.json
+          action: rebuild
+        - path: ./Client/package-lock.json
+          action: rebuild
+        - path: ./Client
+          target: /app
+          action: sync
+  server1:
+    depends_on:
+      - db
+    build: ./Server
+    ports:
+      - 3000:3000
+    develop:
+      watch:
+        - path: ./Server/package.json
+          action: rebuild
+        - path: ./Server/package-lock.json
+          action: rebuild
+        - path: ./Server
+          target: /app
+          action: sync
+  server2:
+    depends_on:
+      - db
+    build: ./Server
+    ports:
+      - 3001:3000
+    develop:
+      watch:
+        - path: ./Server/package.json
+          action: rebuild
+        - path: ./Server/package-lock.json
+          action: rebuild
+        - path: ./Server
+          target: /app
+          action: sync
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: callof12
+      POSTGRES_DB: immortalmsg
+    ports:
+      - 5432:5432
+    volumes:
+      - name:/var/lib/postgresql/data
+    
+
+volumes:
+  name:
