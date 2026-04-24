@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const AuthContext = createContext();
 const API_URL = import.meta.env.VITE_API_URL;
+const API_AUTH = import.meta.env.VITE_API_AUTH;
 axios.defaults.withCredentials = true;
 
 export function AuthProvider({ children }) {
@@ -16,7 +17,7 @@ export function AuthProvider({ children }) {
 
     async function refreshAccessToken() {
         try{
-            const response = await axios.post(`${API_URL}/auth/refresh`);
+            const response = await axios.post(`${API_AUTH}/auth/refresh`);
             setAccessToken(response.data.accessToken);
 
             const profile = await axios.get(`${API_URL}/protect/profile`, {
@@ -32,7 +33,7 @@ export function AuthProvider({ children }) {
 
     async function register(username, email, password, cpassword) {
         try{
-            const response = await axios.post(`${API_URL}/auth/register`, {
+            const response = await axios.post(`${API_AUTH}/auth/register`, {
                 username: username,
                 Remail: email,
                 Rpassword: password,
@@ -47,7 +48,7 @@ export function AuthProvider({ children }) {
 
     async function login(email, password) {
         try{
-            const response = await axios.post(`${API_URL}/auth/login`, {
+            const response = await axios.post(`${API_AUTH}/auth/login`, {
                 Lemail: email,
                 Lpassword: password
             });
@@ -62,7 +63,7 @@ export function AuthProvider({ children }) {
 
     async function logout() {
         try {
-            await axios.post(`${API_URL}/auth/logout`);
+            await axios.post(`${API_AUTH}/auth/logout`);
         } catch (err) {
             console.log('Logout error: ' + err);
         } finally {

@@ -7,38 +7,39 @@ services:
       - "4890:4890"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./Client/dist:/usr/share/nginx/html
     depends_on:
-      - web1
-      - web2
+      # - web1
+      # - web2
       - server1
       - server2
-  web1:
-    build: ./Client
-    ports:
-      - 5173:5173
-    develop:
-      watch:
-        - path: ./Client/package.json
-          action: rebuild
-        - path: ./Client/package-lock.json
-          action: rebuild
-        - path: ./Client
-          target: /app
-          action: sync
-  web2:
-    build: ./Client
-    ports:
-      - 5174:5173
+  # web1:
+  #   build: ./Client
+  #   ports:
+  #     - 5173:5173
+  #   develop:
+  #     watch:
+  #       - path: ./Client/package.json
+  #         action: rebuild
+  #       - path: ./Client/package-lock.json
+  #         action: rebuild
+  #       - path: ./Client
+  #         target: /app
+  #         action: sync
+  # web2:
+  #   build: ./Client
+  #   ports:
+  #     - 5174:5173
     
-    develop:
-      watch:
-        - path: ./Client/package.json
-          action: rebuild
-        - path: ./Client/package-lock.json
-          action: rebuild
-        - path: ./Client
-          target: /app
-          action: sync
+  #   develop:
+  #     watch:
+  #       - path: ./Client/package.json
+  #         action: rebuild
+  #       - path: ./Client/package-lock.json
+  #         action: rebuild
+  #       - path: ./Client
+  #         target: /app
+  #         action: sync
   server1:
     depends_on:
       - db
@@ -67,6 +68,21 @@ services:
         - path: ./Server/package-lock.json
           action: rebuild
         - path: ./Server
+          target: /app
+          action: sync
+  auth1:
+    depends_on:
+      - db
+    build: ./AuthService
+    ports:
+      - 3002:3000
+    develop:
+      watch:
+        - path: ./AuthService/package.json
+          action: rebuild
+        - path: ./AuthService/package-lock.json
+          action: rebuild
+        - path: ./AuthService
           target: /app
           action: sync
   db:

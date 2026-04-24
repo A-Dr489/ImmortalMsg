@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 const http = require('http');
 const { Server } = require('socket.io');
 const server = http.createServer(app);
-const authRouter = require("./routes/authRouter.js");
 const protectedRouter = require("./routes/protectedRouter.js");
 const socketHandler = require("./sockets/socketHandler.js")
 const { authenticateSocket } = require('./utills/middlewares.js');
@@ -19,7 +18,6 @@ app.use(cookieParser());
 app.get("/test", (req, res) => {
   res.send("Handled by: " + process.env.HOSTNAME);
 })
-app.use("/auth", authRouter);
 app.use("/protect", protectedRouter);
 
 const io = new Server(server, {
