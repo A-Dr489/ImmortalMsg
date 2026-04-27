@@ -7,6 +7,7 @@ import Pending from "./components/Pending.jsx";
 import AddFriend from "./components/AddFriend.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import MyAccount from "./components/Profile/MyAccount.jsx";
+import OAuthCallback from "./components/OAuthCallback.jsx";
 
 const routes = [
     {
@@ -51,6 +52,10 @@ const routes = [
     {
         path: '/auth',
         element: <Authentication />
+    }, 
+    {
+        path: '/auth/callback',
+        element: <OAuthCallback />
     }
 ];
 

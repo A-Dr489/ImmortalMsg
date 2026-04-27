@@ -27,6 +27,11 @@ export default function Authentication() {
         setRegisterInfo((prev) => ({...prev, [id]: value}));
     }
 
+    function handleGoogleOAuth() {
+        const API_AUTH = import.meta.env.VITE_API_AUTH;
+        window.location.href = `${API_AUTH}/auth/google`;
+    }
+
     async function handleLoginSubmit(e) {
         e.preventDefault();
         setLoginError("");
@@ -105,6 +110,7 @@ export default function Authentication() {
                     <button type="submit">Submit</button>
                 </form>
             }
+            <button onClick={handleGoogleOAuth}>Google OAuth 2.0</button>
         </>
     )
 }

@@ -98,6 +98,20 @@ export function AuthProvider({ children }) {
         }
     }
 
+    async function setAccessTokenFromOAuth(token) {
+        try {
+            setAccessToken(token);
+            const profile = await axios.get(`${API_URL}/protect/profile`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setUser(profile.data.user);
+        } catch(e) {
+            console.log("OAuthAccessTokenError: " + e);
+        } finally {
+            setLoading(false);
+        }
+    }
+
     const values = {
         user,
         accessToken,
@@ -106,7 +120,8 @@ export function AuthProvider({ children }) {
         register,
         login,
         apiCall,
-        logout
+        logout,
+        setAccessTokenFromOAuth
     };
 
     return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>

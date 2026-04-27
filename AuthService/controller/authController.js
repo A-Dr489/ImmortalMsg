@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const db = require("../storage/query.js");
+const { AUTHENTICATION_METHOD } = require("../utills/Enum.js");
 const { body, validationResult } = require("express-validator");
 const { generateAccessToken, generateRefreshToken, verifyRefreshToken } = require("../utills/jwtTools.js");
 
@@ -72,7 +73,7 @@ exports.postRegister = [validatorRegister, async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.Rpassword, 10);
 
-        const rows = await db.addUser(req.body.username, req.body.Remail, hashedPassword);
+        const rows = await db.addUser(req.body.username, req.body.Remail, hashedPassword, AUTHENTICATION_METHOD.LOCAL);
         res.status(201).json({
             message: "Account created succesfully",
             user: rows[0]

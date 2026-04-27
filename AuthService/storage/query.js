@@ -18,8 +18,8 @@ async function checkEmailExist(email) {
     }
 }
 
-async function addUser(username, email, password) {
-    const { rows } = await pool.query("INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id, username, email", [username, email, password]);
+async function addUser(username, email, password, method) {
+    const { rows } = await pool.query("INSERT INTO users (username, email, password, method) VALUES ($1, $2, $3, $4) RETURNING id, username, email", [username, email, password, method]);
     return rows;
 }
 

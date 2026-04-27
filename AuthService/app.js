@@ -4,11 +4,13 @@ const app = express();
 const corsOptions = {origin: [process.env.ORIGIN], credentials: true}
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
+const { passport } = require("./controller/OAuthController.js");
 const authRouter = require("./routes/authRouter.js");
 
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
+app.use(passport.initialize());
 
 app.use("/auth", authRouter);
 
